@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pointer : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Pointer : MonoBehaviour
     public GameObject mPoint;
     public float mActivationTime = 2.0F;
     GameObject mActivableRef;
+    public GameObject mBar;
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +30,10 @@ public class Pointer : MonoBehaviour
                 if (mActivableRef == null || obj != mActivableRef)
                 {
                     CancelInvoke("Interact");
+                    CancelInvoke("ActivateBar");
                     mActivableRef = obj;
                     Invoke("Interact", mActivationTime);
+                    Invoke("ActivateBar", 0.0F);
                 }
 
             }
@@ -37,12 +41,14 @@ public class Pointer : MonoBehaviour
             {
                 mActivableRef = null;
                 CancelInvoke("Interact");
+                CancelInvoke("ActivateBar");
             }
         }
         else
         {
             mActivableRef = null;
             CancelInvoke("Interact");
+            CancelInvoke("ActivateBar");
         }
     }
 
@@ -64,5 +70,10 @@ public class Pointer : MonoBehaviour
     {
         if (mActivableRef != null)
             mActivableRef.SendMessage("Activate", SendMessageOptions.DontRequireReceiver);
+    }
+
+    public void ActivateBar()
+    {
+        mBar.SendMessage("Activate", SendMessageOptions.DontRequireReceiver);
     }
 }

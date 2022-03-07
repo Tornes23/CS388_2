@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class MovementButton : MonoBehaviour
 {
-    Transform mPlayer;
-
     void Start()
     {
-        //get static reference
-        //mPlayer = Getparen<Transform>();
+
     }
 
     public void Activate()
     {
-        Debug.Log(mPlayer.name);
-        mPlayer.position = transform.position;
+        Debug.Log(StaticPlayer.GetPlayer().name);
+        StaticPlayer.GetPlayer().position = new Vector3(transform.position.x, StaticPlayer.GetPlayer().position.y, transform.position.z);
     }
 }

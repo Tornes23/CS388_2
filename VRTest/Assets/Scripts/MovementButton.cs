@@ -11,7 +11,6 @@ public class MovementButton : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log(StaticPlayer.GetPlayer().name);
         StaticPlayer.GetPlayer().position = new Vector3(transform.position.x, StaticPlayer.GetPlayer().position.y, transform.position.z);
     }
 }

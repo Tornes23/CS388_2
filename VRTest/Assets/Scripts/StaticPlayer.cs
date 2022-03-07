@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 static public class StaticPlayer
 {
     static private Transform mPlayer;
+    static private bool mHasKey = false;
 
     static public Transform GetPlayer()
     {
@@ -15,4 +16,7 @@ static public class StaticPlayer
         }
         return mPlayer;
     }
+
+    static public void PickedKey(bool to_set) { mHasKey = to_set; }
+    static public bool HasKey() { return mHasKey; }
 }

@@ -43,8 +43,12 @@ public class VRTest : MonoBehaviour
         leftFish.strengthX = mSliderXY.value;
         leftFish.strengthY = mSliderXY.value;
 
+        StaticPlayer.SetFishEye(mSliderXY.value);
+
         RightCamera.transform.localPosition = new Vector3(mSliderDistance.value, RightCamera.transform.localPosition.y, RightCamera.transform.localPosition.z);
         LeftCamera.transform.localPosition = new Vector3(-(mSliderDistance.value), LeftCamera.transform.localPosition.y, LeftCamera.transform.localPosition.z);
+
+        StaticPlayer.SetCamPos(LeftCamera.transform.localPosition, RightCamera.transform.localPosition);
 
         if (test)
         {

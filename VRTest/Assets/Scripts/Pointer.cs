@@ -46,7 +46,10 @@ public class Pointer : MonoBehaviour
                         mBar.transform.localScale = new Vector3(mTimer / mActivationTime, 0.2F, mTimer / mActivationTime);
                     }
                     else
+                    {
                         mTimer = 0.0F;
+                        Invoke("Interact", mActivationTime);
+                    }
                 }
 
             }

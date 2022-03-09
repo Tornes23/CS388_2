@@ -7,11 +7,26 @@ public class CameraController : MonoBehaviour
     Vector3 Angles;
     public float sensitivityX;
     public float sensitivityY;
+    public GameObject RightCam;
+    public GameObject LeftCam;
+    public GameObject PCCam;
 
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_STANDALONE_WIN
+        //GetComponent<GyroscopeControl>().enabled = false;
+        RightCam.SetActive(false);
+        LeftCam.SetActive(false);
+        PCCam.SetActive(true);
+#endif
 
+#if UNITY_ANDROID
+        GetComponent<GyroscopeControl>().enabled = true;
+        RightCam.SetActive(true);
+        LeftCam.SetActive(true);
+        PCCam.SetActive(false);
+#endif
     }
 
     // Update is called once per frame

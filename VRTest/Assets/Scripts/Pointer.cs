@@ -8,13 +8,17 @@ public class Pointer : MonoBehaviour
     private Ray mRay;
     public GameObject mPoint;
     public float mActivationTime = 2.0F;
+    public float mTimer = 0.0F;
     GameObject mActivableRef;
+    public GameObject mBackBar;
     public GameObject mBar;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         mRay = new Ray();
+        mBackBar.SetActive(false);
+        mBar.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,10 +34,19 @@ public class Pointer : MonoBehaviour
                 if (mActivableRef == null || obj != mActivableRef)
                 {
                     CancelInvoke("Interact");
-                    CancelInvoke("ActivateBar");
                     mActivableRef = obj;
                     Invoke("Interact", mActivationTime);
-                    Invoke("ActivateBar", 0.0F);
+                }
+                
+                if(mActivableRef != null && obj == mActivableRef)
+                {
+                    mTimer += Time.deltaTime;
+                    if (mTimer <= mActivationTime)
+                    {
+                        mBar.transform.localScale = new Vector3(mTimer / mActivationTime, 0.2F, mTimer / mActivationTime);
+                    }
+                    else
+                        mTimer = 0.0F;
                 }
 
             }
@@ -41,14 +54,16 @@ public class Pointer : MonoBehaviour
             {
                 mActivableRef = null;
                 CancelInvoke("Interact");
-                CancelInvoke("ActivateBar");
+                mBackBar.SetActive(false);
+                mBar.SetActive(false);
             }
         }
         else
         {
             mActivableRef = null;
             CancelInvoke("Interact");
-            CancelInvoke("ActivateBar");
+            mBackBar.SetActive(false);
+            mBar.SetActive(false);
         }
     }
 
@@ -60,9 +75,19 @@ public class Pointer : MonoBehaviour
         if (Physics.Raycast(mRay, out hit, 500.0F))
         {
             mPoint.transform.position = hit.point;
+            mPoint.transform.LookAt(transform.position);
+
+            if (mActivableRef == null || hit.transform.gameObject != mActivableRef)
+            {
+                mBackBar.SetActive(true);
+                mBar.SetActive(true);
+                mTimer = 0.0F;
+                mBar.transform.localScale = new Vector3(0, 0.2F, 0);
+            }
+
             return true;
         }
-        
+
         return false;
     }
 
@@ -72,8 +97,4 @@ public class Pointer : MonoBehaviour
             mActivableRef.SendMessage("Activate", SendMessageOptions.DontRequireReceiver);
     }
 
-    public void ActivateBar()
-    {
-        mBar.SendMessage("Activate", SendMessageOptions.DontRequireReceiver);
-    }
 }

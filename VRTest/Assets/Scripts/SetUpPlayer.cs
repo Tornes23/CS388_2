@@ -12,8 +12,6 @@ public class SetUpPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.LogWarning(StaticPlayer.GetLCamPos().ToString());
-        Debug.LogWarning(StaticPlayer.GetRCamPos().ToString());
         mLeftCam.transform.localPosition = StaticPlayer.GetLCamPos();
         mRightCam.transform.localPosition = StaticPlayer.GetRCamPos();
 

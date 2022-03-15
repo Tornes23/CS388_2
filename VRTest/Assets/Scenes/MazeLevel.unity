@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa75b6621a7eadf4a9c4a0adcc27f546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWalkingTime: 0.1
+  mWalkingTime: 0.5
 --- !u!43 &635444288
 Mesh:
   m_ObjectHideFlags: 0
@@ -27557,7 +27557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa75b6621a7eadf4a9c4a0adcc27f546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWalkingTime: 0.1
+  mWalkingTime: 0.5
 --- !u!1 &1211289668
 GameObject:
   m_ObjectHideFlags: 0
@@ -28114,7 +28114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa75b6621a7eadf4a9c4a0adcc27f546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWalkingTime: 0.1
+  mWalkingTime: 0.5
 --- !u!1 &1778251831
 GameObject:
   m_ObjectHideFlags: 0
@@ -28332,7 +28332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa75b6621a7eadf4a9c4a0adcc27f546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mWalkingTime: 0.1
+  mWalkingTime: 0.5
 --- !u!1 &1896630506
 GameObject:
   m_ObjectHideFlags: 0
@@ -28676,7 +28676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mPoint: {fileID: 886989469}
-  mActivationTime: 0.1
+  mActivationTime: 0.6
   mTimer: 0
   mBackBar: {fileID: 1284190482}
   mBar: {fileID: 283568188}

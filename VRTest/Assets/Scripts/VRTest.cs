@@ -23,8 +23,7 @@ public class VRTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Input.gyro.enabled = true;
-
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         rightFish = RightCamera.GetComponent<Fisheye>();
         leftFish  = LeftCamera.GetComponent<Fisheye>();
     }
